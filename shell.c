@@ -11,10 +11,9 @@ int main(int ac, char **argv)
 {
 	(void)ac;
 	(void)argv;
-	char *lineptr = NULL, *lineptr_cp = NULL;
+	char *lineptr = NULL;
 	size_t n = 0;
 	int num_char = 0;
-	const char *delim = " \n";
 
 	while (1)
 {
