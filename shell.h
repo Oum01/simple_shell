@@ -8,9 +8,4 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-
-int prompt(char **argv);
-void execute(char *cmd);
-
-
 #endif
