@@ -16,6 +16,8 @@ void execute_command(char* command)
 {
 	pid_t pid = fork();
 	int status;
+	char *argv[] = {command, NULL};
+	char *envp[] = {NULL};
 
 	if (pid == -1)
 	{
@@ -24,7 +26,7 @@ void execute_command(char* command)
 	}
 	else if (pid == 0)
 	{
-		if (execve(command, char* command, NULL) == -1)
+		if (execve(command, argv, envp) == -1)
 		{
 			perror("execve");
 			exit(EXIT_FAILURE);
@@ -42,10 +44,10 @@ void execute_command(char* command)
  */
 void shell_loop(void)
 {
+	char command[MAX_COMMAND_LENGTH];
 	char *lineptr = NULL;
 	size_t n = 0;
 	int num_char = 0;
-	char command;
 
 	while (1)
 	{
