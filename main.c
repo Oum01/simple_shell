@@ -12,7 +12,7 @@ void shell_prompt(void)
  * execute_command - Executes the given command
  * @command: The command to execute
  */
-void execute_command(char* command)
+void execute_command(char *command)
 {
 	pid_t pid = fork();
 	int status;
@@ -73,5 +73,5 @@ int main(void)
 	printf("Simple Shell\n");
 	shell_loop();
 	printf("\nExiting the shell.\n");
-	return 0;
+	return (0);
 }
