@@ -9,7 +9,7 @@
  */
 int main(int ac, char **argv)
 {
-	(void)ac; 
+	(void)ac;
 	(void)argv;
 	char *lineptr = NULL, *lineptr_cp = NULL;
 	size_t n = 0;
