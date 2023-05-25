@@ -1,19 +1,5 @@
 #include "main.h"
 
-<<<<<<< HEAD
-int main(int ac, char **argv){
-	char *prompt = "$ ";
-	char *lineptr;
-	size_t n = 0; 
-
-	(void)ac; (void)argv;
-
-	printf("%s", prompt);
-	getline(&lineptr, &n, stdin);
-	printf("%s\n", lineptr);
-
-	free(lineptr);
-=======
 /**
  * shell_prompt - Prints the shell prompt
  */
@@ -87,6 +73,5 @@ int main(void)
 	printf("Simple Shell\n");
 	shell_loop();
 	printf("\nExiting the shell.\n");
->>>>>>> 821376e39bba4ccc78170a73e3f58d923738306f
 	return (0);
 }

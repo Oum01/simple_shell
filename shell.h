@@ -1,5 +1,11 @@
 #ifndef SHELL_H
 #define SHELL_H
+<<<<<<< HEAD
+=======
+
+#include <unistd.h>
+#include <stdlib.h>
+>>>>>>> 52badf5841e3702c0ac917ae3eb80b72a5339f18
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
