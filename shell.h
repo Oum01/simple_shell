@@ -1,18 +1,37 @@
 #ifndef SHELL_H
 #define SHELL_H
-
-#define MAX_COMMAND_LENGTH 256
-
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <signal.h>
+#include <string.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <errno.h>
 
-void shell_prompt(void);
-void execute_command(char *command);
-void shell_loop(void);
+/**
+ * enum status_action_e - actions to be applied to
+ * status code
+ *
+ * @UPDATE_STATUS: action that will be used to
+ * update status code
+ * @GET_STATUS: action that will be used to
+ * get status
+ */
+typedef enum status_action_e
+{
+	UPDATE_STATUS,
+	GET_STATUS
+} status_action_t;
 
+int _status_code(status_action_t action, int new_status);
+void _env(void);
+void __exit(void);
+char **split(char *line, const char *del);
+char *_strdup(const char *str);
+int _strlen(const char *str);
+int _strcmp(const char *s1, const char *s2);
+char *_strcat(char *dest, char *src);
+void execute(char **tokens);
 #endif
