@@ -1,30 +1,64 @@
 #include "shell.h"
 
 /**
- * main - Entry point of the program
- * @ac: The number of command-line arguments
- * @argv: An array of strings containing the command-line arguments
- *
- * Return: 0 upon successful execution
+ * prompt - Displays the prompt "$> " if input is from a terminal
  */
-int main(int ac, char **argv)
+void prompt(void)
 {
-	(void)ac;
-	(void)argv;
-	char *lineptr = NULL;
-	size_t n = 0;
-	int num_char = 0;
-
-	while (1)
-{
-	write(1, "$ ", 2);
-	num_char = getline(&lineptr, &n, stdin);
-	if (num_char == EOF)
-		perror("getline");
-	lineptr[num_char - 1] = '\0';
-	printf("%s\n", lineptr);
-
-	free(lineptr);
+	if (isatty(0))
+		write(1, "$> ", 3);
 }
-	return (0);
+
+/**
+ * handle_ctrl_c - Handles the SIGINT signal by displaying a new prompt
+ * @sig: The signal number (unused)
+ */
+void handle_ctrl_c(int sig)
+{
+	(void)sig;
+
+	if (isatty(0))
+		write(1, "\n$> ", 4);
+}
+
+/**
+ * main - Entry point of the program
+ *
+ * Return: The exit status of the program
+ */
+int main(void)
+{
+	char *line, **tokens;
+	size_t len;
+
+	signal(SIGINT, handle_ctrl_c);
+	while (1)
+	{
+		line = NULL;
+		prompt();
+		if (getline(&line, &len, stdin) == -1)
+		{
+			write(1, "\n", 1);
+			break;
+		}
+		tokens = split(line, " \t\n");
+		if (!tokens || !*tokens)
+		{
+			free(line);
+			continue;
+		}
+		if (!_strcmp(tokens[0], "exit"))
+		{
+			free(line);
+			free(tokens);
+			__exit();
+		}
+		else if (!_strcmp(tokens[0], "env"))
+			_env();
+		else
+			execute(tokens);
+		free(line);
+		free(tokens);
+	}
+	return (_status_code(GET_STATUS, 0));
 }
