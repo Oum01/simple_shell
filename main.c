@@ -9,7 +9,7 @@
 void prompt(void)
 {
 	if (isatty(0))
-		write(1, "$> ", 3);
+		write(1, "$ ", 2);
 }
 
 /**
@@ -25,7 +25,7 @@ void handle_ctrl_c(int sig)
 	(void)sig;
 
 	if (isatty(0))
-		write(1, "\n$> ", 4);
+		write(1, "\n$ ", 3);
 }
 
 /**
