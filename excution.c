@@ -116,7 +116,6 @@ void execute(char **tokens, char *line)
 	{
 		execve(command_with_path, tokens, __environ);
 		free(command_with_path);
-		perror("$");
 		if (errno == EACCES)
 		{
 			_print_error(tokens[0], "Permission denied");
