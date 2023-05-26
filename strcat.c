@@ -1,11 +1,13 @@
 #include "shell.h"
 
 /**
- * _strcat - Concatenates two strings
- * @dest: The destination string
- * @src: The source string
+ * _strcat - function that takes two
+ * strings and concatenate them
  *
- * Return: A pointer to the concatenated string
+ * @dest: destination string that will
+ * recieve characters
+ * @src: source of the characters
+ * Return: (dest)
  */
 char *_strcat(char *dest, char *src)
 {

@@ -1,10 +1,11 @@
-#include "shell.h"
 
 /**
- * _strlen - Computes the length of a string
- * @str: The string to compute the length of
+ * _strlen - function that counts
+ * number of character in a given
+ * string
  *
- * Return: The length of the string
+ * @str: string
+ * Return: integer
  */
 int _strlen(const char *str)
 {

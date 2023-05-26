@@ -6,6 +6,7 @@
  * status of the last command
  * executed
  *
+ * Return: (void)
  */
 void __exit(void)
 {

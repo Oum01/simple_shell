@@ -1,12 +1,10 @@
-#include "shell.h"
 /**
- * _strcmp - Compare two strings.
- * @s1: The first string to compare.
- * @s2: The second string to compare.
- * Return: An integer value indicating the comparison result.
- *	- If the two strings are equal, returns 0.
- *	- If the first string is greater, returns a positive value.
- *	- If the second string is greater, returns a negative value.
+ * _strcmp - function that compares two
+ * strings
+ *
+ * @s1: first string
+ * @s2: second string
+ * Return: zero when two strings are equal
  */
 int _strcmp(const char *s1, const char *s2)
 {

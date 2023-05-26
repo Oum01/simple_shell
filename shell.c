@@ -1,7 +1,10 @@
 #include "shell.h"
 
 /**
- * prompt - Displays the prompt "$> " if input is from a terminal
+ * prompt - function that will showed
+ * to the user to enter commands
+ *
+ * Return: (void)
  */
 void prompt(void)
 {
@@ -10,8 +13,12 @@ void prompt(void)
 }
 
 /**
- * handle_ctrl_c - Handles the SIGINT signal by displaying a new prompt
- * @sig: The signal number (unused)
+ * handle_ctrl_c - function that will be
+ * passed to the signal to handle
+ * ctrl-c
+ *
+ * @sig: signint signal number
+ * Return: (void)
  */
 void handle_ctrl_c(int sig)
 {
@@ -22,9 +29,9 @@ void handle_ctrl_c(int sig)
 }
 
 /**
- * main - Entry point of the program
+ * main - entry point to the program
  *
- * Return: The exit status of the program
+ * Return: (0) success, otherwise error
  */
 int main(void)
 {
@@ -38,12 +45,14 @@ int main(void)
 		prompt();
 		if (getline(&line, &len, stdin) == -1)
 		{
+			free(line);
 			break;
 		}
 		tokens = split(line, " \t\n");
 		if (!tokens || !*tokens)
 		{
 			free(line);
+			free(tokens);
 			continue;
 		}
 		if (!_strcmp(tokens[0], "exit"))

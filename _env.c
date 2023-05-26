@@ -11,10 +11,9 @@ void _env(void)
 	char **envs;
 
 	envs = __environ;
-
 	while (*envs)
 	{
-	printf("%s\n", *envs);
-	envs++;
+		printf("%s\n", *envs);
+		envs++;
 	}
 }

@@ -1,11 +1,13 @@
 #include "shell.h"
 
 /**
- * count_word - Counts the number of words in a string
- * @line: The string to count words from
- * @del: The delimiter used to split the string into words
+ * count_word - function that calculate
+ * number of words that were splitted
+ * with del
  *
- * Return: The number of words in the string
+ * @line: to be splitted
+ * @del: to be split with
+ * Return: number of words
  */
 int count_word(char *line, const char *del)
 {
@@ -24,11 +26,13 @@ int count_word(char *line, const char *del)
 }
 
 /**
- * split - Splits a string into an array of tokens
- * @line: The string to be split
- * @del: The delimiter used to split the string
+ * split - function that splits given string
+ * into multiple substrings
  *
- * Return: An array of tokens
+ * @line: line to be splitted
+ * @del: to split with
+ * Return:  2d array of characters with trailing
+ * NULL
  */
 char **split(char *line, const char *del)
 {
