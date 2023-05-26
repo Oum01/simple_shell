@@ -103,10 +103,14 @@ void execute(char **tokens)
 	{
 		execve(command_with_path, tokens, __environ);
 		free(command_with_path);
-		free(tokens);
-		perror("$");
 		if (errno == EACCES)
+		{
+			_fprintf(2, "%s: %d: %s: Permission denied\n",
+				(char *)_global_variables(GET_PROGRAM_NAME, NULL),
+				*((int *)_global_variables(GET_LINE_NUMBER, NULL)),
+				tokens[0]);
 			_exit(126);
+		}
 		exit(errno);
 	}
 	else
