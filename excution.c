@@ -129,7 +129,7 @@ void execute(char **tokens, char *line)
 	}
 	else
 	{
-		wait(&status);
+		waitpid(pid, &status, 0);
 		_status_code(UPDATE_STATUS, WEXITSTATUS(status));
 		free(command_with_path);
 	}
