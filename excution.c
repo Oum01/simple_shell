@@ -125,7 +125,7 @@ void execute(char **tokens, char *line)
 		}
 		free(line);
 		free(tokens);
-		exit(errno);
+		exit(127);
 	}
 	else
 	{
