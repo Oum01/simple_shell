@@ -39,7 +39,7 @@ char *get_path(void)
  */
 char *get_command_path(char *command_name)
 {
-	char *path, **path2d, **iterator, dest[200];
+	char *path, **path2d, **iterator, dest[2000];
 	struct stat st;
 
 	if ((command_name[0] == '.' ||
@@ -109,7 +109,7 @@ void execute(char **tokens, char *line)
 	if (pid < 0)
 	{
 		perror("$");
-		_status_code(UPDATE_STATUS, 1);
+		_status_code(UPDATE_STATUS, errno);
 		return;
 	}
 	else if (pid == 0)
