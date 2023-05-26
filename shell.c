@@ -31,13 +31,17 @@ void handle_ctrl_c(int sig)
 /**
  * main - entry point to the program
  *
+ * @ac: number of arguments
+ * @av: arguments
  * Return: (0) success, otherwise error
  */
-int main(void)
+int main(int ac, char *av[])
 {
 	char *line, **tokens;
 	size_t len;
 
+	(void)ac;
+	_global_variables(SET_PROGRAM_NAME, av[0]);
 	signal(SIGINT, handle_ctrl_c);
 	while (1)
 	{
@@ -55,6 +59,7 @@ int main(void)
 			free(tokens);
 			continue;
 		}
+		_global_variables(INCREMENT_LINE, NULL);
 		if (!_strcmp(tokens[0], "exit"))
 		{
 			free(line);

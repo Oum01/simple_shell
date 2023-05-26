@@ -13,7 +13,7 @@ void _env(void)
 	envs = __environ;
 	while (*envs)
 	{
-		printf("%s\n", *envs);
+		_fprintf(1, "%s\n", *envs);
 		envs++;
 	}
 }

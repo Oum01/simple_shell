@@ -85,7 +85,10 @@ void execute(char **tokens)
 	command_with_path = get_command_path(tokens[0]);
 	if (!command_with_path)
 	{
-		write(2, "Command Not Found\n", 19);
+		_fprintf(2, "%s: %d: %s: not found\n",
+				 (char *)_global_variables(GET_PROGRAM_NAME, NULL),
+				 *((int *)_global_variables(GET_LINE_NUMBER, NULL)),
+				 tokens[0]);
 		_status_code(UPDATE_STATUS, 127);
 		return;
 	}
