@@ -53,7 +53,7 @@ char *_strdup(const char *str);
 int _strlen(const char *str);
 int _strcmp(const char *s1, const char *s2);
 char *_strcat(char *dest, char *src);
-void execute(char **tokens);
+void execute(char **tokens, char *line);
 void *_global_variables(global_action_t action, char *str);
 void _fprintf(int fd, const char *format, ...);
 #endif

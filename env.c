@@ -16,4 +16,5 @@ void _env(void)
 		_fprintf(1, "%s\n", *envs);
 		envs++;
 	}
+	_status_code(UPDATE_STATUS, 0);
 }

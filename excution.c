@@ -70,14 +70,30 @@ char *get_command_path(char *command_name)
 }
 
 /**
+ * _print_error - function that prints errors
+ *
+ * @command: name of the command
+ * @error_type: type of error
+ * Return: (void)
+ */
+void _print_error(const char *command, const char *error_type)
+{
+	_fprintf(2, "%s: %d: %s: %s\n",
+			 (char *)_global_variables(GET_PROGRAM_NAME, NULL),
+			 *((int *)_global_variables(GET_LINE_NUMBER, NULL)),
+			 command, error_type);
+}
+
+/**
  * execute - function that executes
  * given command
  *
  * @tokens: 2d array contain command
  * information
+ * @line: string to be freed on child proccess
  * Return: (void)
  */
-void execute(char **tokens)
+void execute(char **tokens, char *line)
 {
 	char *command_with_path;
 	int pid, status;
@@ -85,10 +101,7 @@ void execute(char **tokens)
 	command_with_path = get_command_path(tokens[0]);
 	if (!command_with_path)
 	{
-		_fprintf(2, "%s: %d: %s: not found\n",
-				 (char *)_global_variables(GET_PROGRAM_NAME, NULL),
-				 *((int *)_global_variables(GET_LINE_NUMBER, NULL)),
-				 tokens[0]);
+		_print_error(tokens[0], "not found");
 		_status_code(UPDATE_STATUS, 127);
 		return;
 	}
@@ -103,14 +116,16 @@ void execute(char **tokens)
 	{
 		execve(command_with_path, tokens, __environ);
 		free(command_with_path);
+		perror("$");
 		if (errno == EACCES)
 		{
-			_fprintf(2, "%s: %d: %s: Permission denied\n",
-				(char *)_global_variables(GET_PROGRAM_NAME, NULL),
-				*((int *)_global_variables(GET_LINE_NUMBER, NULL)),
-				tokens[0]);
+			_print_error(tokens[0], "Permission denied");
+			free(line);
+			free(tokens);
 			_exit(126);
 		}
+		free(line);
+		free(tokens);
 		exit(errno);
 	}
 	else

@@ -69,7 +69,7 @@ int main(int ac, char *av[])
 		else if (!_strcmp(tokens[0], "env"))
 			_env();
 		else
-			execute(tokens);
+			execute(tokens, line);
 		free(line);
 		free(tokens);
 	}
