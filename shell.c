@@ -38,7 +38,6 @@ int main(void)
 		prompt();
 		if (getline(&line, &len, stdin) == -1)
 		{
-			write(1, "\n", 1);
 			break;
 		}
 		tokens = split(line, " \t\n");
