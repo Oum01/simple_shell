@@ -52,6 +52,7 @@ int main(int ac, char *av[])
 			free(line);
 			break;
 		}
+		line = remove_comments(line);
 		tokens = split(line, " \t\n");
 		if (!tokens || !*tokens)
 		{

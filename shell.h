@@ -56,4 +56,5 @@ char *_strcat(char *dest, char *src);
 void execute(char **tokens, char *line);
 void *_global_variables(global_action_t action, char *str);
 void _fprintf(int fd, const char *format, ...);
+char *remove_comments(char *s);
 #endif
