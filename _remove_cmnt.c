@@ -13,7 +13,7 @@ char *remove_comments(char *s)
 
 	if (!s)
 		return (NULL);
-	is_space = 0;
+	is_space = 1;
 	index = 0;
 	while (s[index])
 	{
